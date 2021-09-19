@@ -16,11 +16,8 @@ ________
         c     ) Creator 
         d     ) delete
         ?     ) checker
-________
-Pxmortza/search_dir is licensed under the
-
-GNU General Public License
-_______
+ 
+green color added...
 
 ## GOOD LUCK...
 

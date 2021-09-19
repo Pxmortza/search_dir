@@ -1,6 +1,6 @@
-#!/bin/bash
+#! /bin/bash
 # coded by mortza
-#thank you grand Teachar amirreza  Amirsamimi
+# thank you grand Teachar amirreza  Amirsamimi
 
 #----------------------------------------
 
@@ -9,9 +9,14 @@ trap 'normalplease'  1
 BASEDIR="$HOME/search_dir"
 
 #----------------------------------------
+
+#Color theme
+GREEN='\033[0;36m'
+
+#----------------------------------------
 #start screen
 clear
-echo "Simple jobs mkdir..."
+echo "'$GREEN Simple jobs dir...'"
 
 sleep 2
 clear
@@ -25,12 +30,12 @@ menu()
 	while [ $exit != "true" ]
 	do
 		clear
-		echo "What would you like to do?"
-		echo "1. create folder(in HOME url... display help screen)"
-		echo "2. delete directory(if hasint in your system is folder)"
-		echo "3. check this file has in your system or no.(no/yes)"
-		echo "0.exit" Exit
-		echo -n "Please enter your choice"
+		echo   ${GREEN}"What would you like to do?"
+		echo   ${GREEN}"1. create folder(in HOME url... display help screen)"
+		echo   ${GREEN}"2. delete directory(if hasint in your system is folder)"
+		echo   ${GREEN}"3. check this file has in your system or no.(no/yes)"
+		echo   ${GREEN}"0.exit" Exit
+		echo -n ${GREEN}"Please enter your choice"
 
 		read choice
 		case $choice in
@@ -38,10 +43,10 @@ menu()
 			1) creator ;;
 			2) delete  ;;
 			3) checker ;;
-			*) echo "Please enter a valid choice";
+			*) echo "'${GREEN}Please enter a valid choice'";
 		esac
 
-		echo "Press Enter to continue"
+		echo "'${GREEN}Press Enter to continue'"
 		read
 	done
 
@@ -69,12 +74,12 @@ esac
 #HELP SCREEN
 help(){
 
-echo "Usage: `basename $0`
+echo  "Usage: `basename $0`
 -------------------------------------------- /n
-[-h] [-c] [--delete] [-?] /n
-h - display this help screen /n
-c - create the folder[if not find the folder] /n
-d - delete the directory /n
+ ${GREEN} [-h] [-c] [--delete] [-?] /n
+ ${GREEN} h - display this help screen /n
+ ${GREEN} c - create the folder[if not find the folder] /n
+ ${GREEN} d - delete the directory /n
 ---------------------------------------------"
 
 }
@@ -83,13 +88,13 @@ d - delete the directory /n
 #Creator,mkdir
 Creator(){
 
-    read -p "Pls enter a directory name: " directory
+    read -p "'$GREEN Pls enter a directory name: '" directory
 if [-d "$HOME"/$directory ];then
-   echo "Directory existed"
+   echo "'$GREEN Directory existed '"
 else
-   echo "ok,Starting mkdir for craete Folder $directory"
+   echo "'$GREEN ok,Starting mkdir for craete Folder $directory '"
    mkdir "$directory"
-   echo "done,exit..."
+   echo "'$GREEN done,exit... '"
 fi
 }
 
@@ -101,12 +106,31 @@ checker(){
 pwd /n 
 ls /n
 clear
-    read -p "pls enter a directory name: " directory 
+    read -p "'$GREEN pls enter a directory name: '" directory 
       if [ -d "$HOME/$directory" ];then
-         echo "directory existed"
+         echo "'$GREEN directory existed '"
      else
-        echo "directory not existed"
+        echo "'$GREEN directory not existed '"
       fi
 }
+
+#----------------------------------------
+#rmdir
+delete(){
+	pwd 
+	sleep 3
+	clear
+	read -p "'$GREEN pls enter a directory name: '" directory
+	  if [ -d "$HOME/$directory" ];then
+	     rmdir "$directory"
+		       echo "'$GREEN done'"
+		else  
+		       echo "'$GREEN directory not found '"
+	  fi
+}
+
+#----------------------------------------
+#main call
+main "${@}"
 
 #----------------------------------------
